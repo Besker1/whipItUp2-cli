@@ -1,0 +1,22 @@
+body{
+    text-align: center;
+}
+ul li {
+    list-style: none;
+}
+/* header{
+    text-align: center;
+}
+
+main{
+    text-align: center;
+} */
+
+body header nav{
+    display: flex;
+    justify-content: space-between;
+}
+
+.menu{
+    display: inline-flex ;
+}
