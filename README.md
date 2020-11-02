@@ -9,9 +9,9 @@ whitIpUp is an app that help people cook a bit easier. the user will have a list
 
 ## Users
 
-can login 
-sign up
-get recipes
+* can login 
+* sign up
+* get recipes
 
 ## App Links: 
 
