@@ -1,4 +1,5 @@
 # WhipItUp
+![Whipitup](img/whipItUp.png)
 
 " Cooking made Easy"
 ## Descriptions and Users 
@@ -12,9 +13,9 @@ get recipes
 
 ## App Links: 
 
-* [FrontPage](Signin.html)
-* [Recipes](recipes.html)
-* [signin](signin.html)
-* [signUp](signup.html)
+* [FrontPage](https://github.com/Besker1/WhipItup2/blob/master/wireframing/frontPage.html)
+* [Recipes](https://github.com/Besker1/WhipItup2/blob/master/wireframing/recipes.html)
+* [signin](https://github.com/Besker1/WhipItup2/blob/master/wireframing/Signin.html)
+* [signUp](https://github.com/Besker1/WhipItup2/blob/master/wireframing/Signup.html)
 
 
