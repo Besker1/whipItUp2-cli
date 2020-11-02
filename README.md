@@ -1,5 +1,5 @@
 # WhipItUp
-![Whipitup](img/pop.jpg)
+![Whipitup](wireframing/img/pop.jpg)
 
 " Cooking made Easy"
 ## Descriptions and Users 
