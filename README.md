@@ -13,6 +13,7 @@ whitIpUp is an app that help people cook a bit easier. the user will have a list
 * sign up
 * get recipes
 
+
 ## App Links: 
 
 * [FrontPage](https://github.com/Besker1/WhipItup2/blob/master/wireframing/frontPage.html)
