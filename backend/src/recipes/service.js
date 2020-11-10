@@ -1,3 +1,11 @@
+const knex = require('knex')
+
+
+const knexInstance = knex({
+  client: 'pg',
+  connection: DB_URL,
+})
+
 const get_recipes = () => {
     return (
     knexIntance 
@@ -7,3 +15,7 @@ const get_recipes = () => {
     )
     )
 };
+
+ module.exports = {
+     get_recipes
+ }

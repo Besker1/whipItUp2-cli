@@ -7,8 +7,8 @@
     "test": "mocha",
     "dev": "nodemon src/server.js",
     "start": "node src/server.js",
-  "predeploy": "npm audit",
-  "deploy": "git push heroku master"
+    "predeploy": "npm audit",
+    "deploy": "git push heroku master"
   },
   "keywords": [],
   "author": "",
@@ -23,5 +23,9 @@
     "morgan": "^1.10.0",
     "nodemon": "^2.0.6",
     "supertest": "^5.0.0"
+  },
+  "dependencies": {
+    "knex": "^0.21.12",
+    "pg": "^8.5.0"
   }
 }
