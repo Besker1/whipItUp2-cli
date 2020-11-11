@@ -4,14 +4,17 @@ const {v4: uuid} = require('uuid');
 const recipe_Router = express.Router();
 const jasonParser = express.json();
 const logger = require('../logger');
-const {recipes, recipe_lists} = require('./Dummy_db');
+const recipes = require('./recipe_service.js');
 
 
 recipe_Router
   .route('/recipe')
-  .get((req, res) => {
-    // move implementation logic into here
-    req.json(recipes);
+  .get((req, res, next) => {
+    const knexInstance = req.app.get('db')
+    recipes.getAllRecipes(knexInstance)
+    .then(recipes => {
+      res.json(recipes)
+    }).catch(next)
   })
 
   .post(jasonParser, (req, res) => {
@@ -29,18 +32,31 @@ recipe_Router
       return res
         .status(400)
         .send('Invalid data');
-    }
+    }    
+    
+    const { title, content, meal,regularity, img } = req.body
+
     const id = uuid();
-  
-    const recipe = {
+    const newRecipe = {
       id,
       title,
-      content
+      content,
+      meal,
+      regularity,
+      img
     };
-    
-    recipes.push(recipe);
-  
-    //// log the recipe creation and send a response including a location header.
+    recipes.insert_new_recipe(
+      req.app.get('db'),
+      newRecipe
+    )
+      .then(recipe => {
+        res
+          .status(201)
+          .location(`/recipe/${recipe.id}`)
+          .json(recipe)
+      })
+      .catch(next)
+    //// log the new recipe creation and send a response including a location header.
   
     logger.info(`recipe with id ${id} created`);
   
@@ -50,6 +66,7 @@ recipe_Router
       .json(recipes);
 
   });
+  
 
 //recipe route with ids
 recipe_Router
@@ -105,6 +122,6 @@ recipe_Router
 
   ///vegan recipe routers 
 
-  
+
 
 module.exports = recipe_Router;

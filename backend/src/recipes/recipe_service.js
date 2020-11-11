@@ -1,13 +1,23 @@
 
 const recipe_services = {
-    getAllRecipes(){
+    getAllRecipes(knex){
       return knex
       .select('*')
       .from('recipes.db');
   }, 
 
-  getAllVeganRecipes(){
-    return
+  getAllVeganRecipes(knex){
+    return knex
+    .select('*')
+    .from('recipes_db')
+    .where('is_vegan', true)
+  },
+
+  insertNewRecipe(knex){
+    return knex
+    .insert(newRecipe)
+    .into('recipe_db')
+    .returning('*')
   }
 
 };

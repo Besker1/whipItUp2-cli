@@ -3,6 +3,6 @@ CREATE TABLE recipes_table (
     title TEXT NOT NULL,
     content TEXT,
     meal TEXT,
-    regularity TEXT,
+    is_vegan BOOLEAN,
     img TEXT NOT NULL
 );

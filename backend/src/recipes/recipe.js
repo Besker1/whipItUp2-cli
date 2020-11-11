@@ -9,4 +9,4 @@ const knexInstance = knex({
   connection: DB_URL,
 })
 
-console.log(recipe.getAllRecipes)
+console.log(recipe.getAllRecipes())
