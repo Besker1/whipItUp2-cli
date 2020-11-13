@@ -19,7 +19,8 @@ recipe_Router
 
   .post(jasonParser, (req, res) => {
     // move implementation logic into here
-    const {title, content } = req.body;
+    const { title, content, meal,regularity, img } = req.body
+
     if (!title) {
       logger.error('Title is required');
       return res
@@ -33,8 +34,19 @@ recipe_Router
         .status(400)
         .send('Invalid data');
     }    
+    if (!meal) {
+      logger.error('Meal is required');
+      return res
+        .status(400)
+        .send('Invalid data');
+    }    
+    if (!regularity) {
+      logger.error('have to enter if it\'s vegan or not');
+      return res
+        .status(400)
+        .send('Invalid data');
+    }    
     
-    const { title, content, meal,regularity, img } = req.body
 
     const id = uuid();
     const newRecipe = {
@@ -89,39 +101,74 @@ recipe_Router
   })
 
   /// search the recipe and by id
-  .delete((req, res) => {
 
+    .delete((req, res, next) => {
+
+    const knexInstance = req.app.get('db')
     const { id } = req.params;
-
-    const recipeIndex = recipes.findIndex(c => c.id === id);
-
-    if (recipeIndex === -1) {
-      logger.error(`recipe with id ${id} not found.`);
-      return res
-        .status(404)
-        .send('Not found');
-    }
-
-    //delete recipe from recipe lists
-
-    recipe_lists.forEach(list => {
-      const recipeIds = list.cardIds.filter(cid => cid !== id);
-      list.recipeIds = recipeIds;
-    });
-
-    recipes.splice(recipeIndex, 1);
-
-    logger.info(`recipe with id ${id} deleted.`);
-
-    res
-      .status(204)
-      .end();
-
-  });
+         recipes.deleteRecipes(knexInstance, id)
+        .then(recipeSelected => {
+          res.status(204).end()
+        })
+        .catch(next)
+    })
 
 
   ///vegan recipe routers 
 
 
 
-module.exports = recipe_Router;
+//// routings with dynamic ids and home path
+
+recipe_Router
+  .route('/')
+  .get((req, res, next) => {
+    const knexInstance = req.app.get('db')
+    recipes.getAllRecipes(knexInstance)
+      .then(recipes => {
+        res.json(recipes)
+      })
+      .catch(next)
+  })
+  .post( (req, res, next) => {
+    const { title, content, meal,regularity, img } = req.body
+
+    const recipeId = uuid();
+    const newRecipe = {
+      recipeId,
+      title,
+      content,
+      meal,
+      regularity,
+      img
+    };
+    recipes.insertNewRecipe(
+      req.app.get('db'),
+      newRecipe
+    )
+      .then(recipe => {
+        res
+          .status(201)
+          .location(`/recipess/${recipe.id}`)
+          .json(recipe)
+      })
+      .catch(next)
+  })
+
+recipe_Router
+  .route('/:recipeId')
+  .get((req, res, next) => {
+    const knexInstance = req.app.get('db')
+    recipes.getRecipesById(knexInstance, req.params.id)
+      .then(recipe => {
+        if (!recipe) {        
+          looger.error(`this ${recipe} is not available feel free to add it` )
+          return res.status(404)
+                    .send('not found')
+        }
+        res.json(recipe)
+      })
+      .catch(next)
+  })
+
+module.exports = recipe_Router
