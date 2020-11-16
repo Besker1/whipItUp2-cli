@@ -1,5 +1,10 @@
-export default function Recipes (){
+export default function Recipes (props){
     return (
-        <h1>I am recipe</h1>
+<div>
+    <h1>{props.title}</h1>
+    <img src ={props.image} alt = {props.title}/>
+    <p>{props.content}</p>
+ </div>
+
     )
 }

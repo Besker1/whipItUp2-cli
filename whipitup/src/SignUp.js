@@ -1,5 +1,5 @@
-export default function SignUp(){
-    return (
-        <h1>Signin</h1>
-    )
-}
+// export default function SignUp(){
+//     return (
+//         <h1>Signin</h1>
+//     )
+// }
