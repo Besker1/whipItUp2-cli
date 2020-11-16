@@ -1,6 +1,6 @@
 import './App.css';
 import { Component } from 'react';
-import FrontPage from './FrontPage';
+import FrontPage from './Users/FrontPage';
 
 export default class App extends Component{
   state = {

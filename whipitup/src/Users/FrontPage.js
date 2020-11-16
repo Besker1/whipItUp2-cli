@@ -1,23 +1,26 @@
+import {Route, Link} from 'react-router-dom'
 export default function FrontPage(props){
     return (
+        <Route>
         <div class="front-page">
         <main>
     <header>
         <nav>
             {/* <!-- the logo will be on the left with the moto be in column with the whipitup --> */}
            <div class="logo">
-               <h1>WhipItUp</h1>
+               <h1><Link to ='/'> WhipItUp</Link></h1>
             <p class="moto">"Cooking made Easy"</p>
         </div> 
 
         {/* <!-- singin and sign up menu will be on the righ hand side of the page --> */}
-        <div class="menu">
+            <div class="menu">
             <ul>
-                <li>About</li>
-                <li>Login</li>
-                <li>Sign Up</li>
+                <li><Link to = './about'> About</Link></li>
+                <li><Link to = './login'> Login</Link></li>
+                <li><Link to = './signup'> Sign Up</Link></li>
             </ul>
         </div>
+        
         </nav>
 
         {/* <!-- get recipe will be placed in the middle of the page --> */}
@@ -46,5 +49,6 @@ export default function FrontPage(props){
         </div>
     </footer>
 </div>
+        </Route>
     )
 }
