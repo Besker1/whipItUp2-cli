@@ -35,3 +35,22 @@ footer{
   display: flex;
   justify-content: space-between;
 }
+
+.sign-form{
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  margin: 50px 500px;
+}
+
+.sign-form input{
+  display: flex;
+  padding: 20px;
+  justify-content: start;
+}
+
+button{
+  padding: 10px;
+  margin: 20px 100px 200px 100px;
+
+}

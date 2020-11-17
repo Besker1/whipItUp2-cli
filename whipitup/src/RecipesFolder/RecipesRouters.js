@@ -5,8 +5,14 @@ import LoginPage from '../Users/LoginPage'
 import SignUpPage from '../Users/SignUpPage'
 import RecipeSearchPage from '../RecipesFolder/RecipeSearchPage'
 
-<Route path = '/' component ={FrontPage}/>;
-<Route path = '/about' component ={AboutPage}/>;
-<Route path = '/login' component ={LoginPage}/>;
-<Route path = '/signup' component ={SignUpPage}/>;
-<Route path = '/recipe' component ={RecipeSearchPage}/>;
+
+
+export default function RecipesRouter() {
+        return (
+                <Route path = '/' component ={FrontPage}/>,
+                <Route path = '/about' component ={AboutPage}/>,
+                <Route path = '/login' component ={LoginPage}/>,
+                <Route path = '/signup' component ={SignUpPage}/>,
+                <Route path = '/recipe' component ={RecipeSearchPage}/>
+        )
+}
