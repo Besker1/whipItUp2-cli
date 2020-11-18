@@ -25,7 +25,7 @@ export default class App extends Component{
   }
 
   /// search for recipes using the api based on the data which can be vegan or nothing 
-componentDidMount () { 
+  componentDidMount () { 
    const url = this.state.url; 
    const options = {
     headers: {
@@ -36,13 +36,12 @@ componentDidMount () {
 }
 
   fetch(`${url}`, options)
+  .then(res => res.json())
   .then(res => this.handleRecipe(res))
-  
 }
 /// push the recipe to the recipes found from fetch to the recipes in the state;
   handleRecipe = (data) => {
     console.log(data)
-    debugger
     this.setState({
       recipes: data
     })
@@ -70,7 +69,6 @@ render(){
       <Route path = '/login' component ={LoginPage}/>
       <Route path = '/signup' component ={SignUpPage}/>
       <Route path = '/recipe' >
-
         <RecipeSearchPage   />
         <RecipeList recipes = {this.state.recipes}/>
       </Route>

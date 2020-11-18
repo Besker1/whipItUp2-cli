@@ -1,4 +1,4 @@
-import RecipeList from "./recipe-list";
+// import RecipeList from "./recipe-list";
 import React from 'react'
 
 export default function RecipeSearchPage(props){
@@ -19,10 +19,7 @@ export default function RecipeSearchPage(props){
     </form>
     <div className="results">
         <ul>
-            {/* <li>{<RecipeList recipes = {props.recipes}/>}</li> */}
-            <li>recipe 2 with video</li>
-            <li> recipe 3 with video</li>
-            <li>recipe 4 with video</li>
+            
         </ul>
     </div>
 </body>

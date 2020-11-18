@@ -1,10 +1,10 @@
 import React from 'react'
 export default function Recipes (props){
+    const content = props.content.map(cont => <li>{cont}</li>)
     return (
 <div>
     <h1>{props.title}</h1>
-    <img src ={props.image} alt = {props.title}/>
-    <p>{props.content}</p>
+    <ul>{content}</ul>
  </div>
 
     )

@@ -1,5 +1,5 @@
 import {Link} from 'react-router-dom'
-import Footer from './Footer'
+// import Footer from './Footer'
 import React from 'react'
 
 export default function Menu(){
