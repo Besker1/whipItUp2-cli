@@ -1,6 +1,6 @@
 import './App.css';
 import './index.css'
-import { Component } from 'react';
+import { React, Component } from 'react';
 import FrontPage from './Users/FrontPage'
 import {Route} from 'react-router-dom'
 import AboutPage from './Users/AboutPage'
@@ -10,6 +10,7 @@ import RecipeSearchPage from './RecipesFolder/RecipeSearchPage'
 import Menu from './Users/Menu';
 import Footer from './Users/Footer';
 import Nav from './Users/Nav';
+import RecipeList from './RecipesFolder/recipe-list';
 
 
 
@@ -20,62 +21,38 @@ export default class App extends Component{
     breakfast: false,
     dinner: false,
     lunch: true,
-    url: ""
+    url: "http://localhost:8000/"
   }
 
   /// search for recipes using the api based on the data which can be vegan or nothing 
-  componentDidMount = async (data) => { 
-   const url = this.state.url;
-   //if there isn't any data sent we can just fetch all the recipes 
-    if(!data){
-      const res = await fetch(`${url}/`);
-        return this.handleRecipe(res);
-    }else {
-      /// if there is data search for the recipe based on the data sent 
-      try {
-        const res_1 = await fetch(`${url}/${data}`);
-        return this.handleRecipe(res_1);
-      } catch (error) {
-        return console.log(error);
+componentDidMount () { 
+   const url = this.state.url; 
+   const options = {
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'SECRET-API_TOKEN'
+    },
+    method: "GET",
+}
 
-    }
-  }
+  fetch(`${url}`, options)
+  .then(res => this.handleRecipe(res))
+  
 }
 /// push the recipe to the recipes found from fetch to the recipes in the state;
   handleRecipe = (data) => {
-    const recipes = this.state.recipes;
-    recipes.push(data)
+    console.log(data)
+    debugger
+    this.setState({
+      recipes: data
+    })
   }
 
-  // renderNavRoutes() {
-  //   return (
-  //     <>
-  //       {['/', '/folder/:folderId'].map((path) => (
-  //         <Route exact key={path} path={path} component={NoteListNav} />
-  //       ))}
-  //       <Route path='/note/:noteId' component={NotePageNav} />
-  //       <Route path='/add-folder' component={NotePageNav} />
-  //       <Route path='/add-note' component={NotePageNav} />
-  //     </>
-  //   );
-  // }
+render(){   
+  
 
-  // renderMainRoutes() {
-  //   return (
-  //     <>
-  //       {['/', '/folder/:folderId'].map((path) => (
-  //         <Route exact key={path} path={path} component={NoteListMain} />
-  //       ))}
-  //       <Route path='/note/:noteId' component={NotePageMain} />
-  //       <Route path='/add-folder' component={AddFolder} />
-  //       <Route path='/add-note' component={AddNote} />
-  //     </>
-  //   );
-  // }
+   return (  
 
-
-render(){
-   return (
    <div className="front-page">
       <main>
 
@@ -92,8 +69,13 @@ render(){
       <Route exact path = '/about' component ={AboutPage}/>
       <Route path = '/login' component ={LoginPage}/>
       <Route path = '/signup' component ={SignUpPage}/>
-      <Route path = '/recipe' component ={RecipeSearchPage}/>
-     </div>
+      <Route path = '/recipe' >
+
+        <RecipeSearchPage   />
+        <RecipeList recipes = {this.state.recipes}/>
+      </Route>
+     </div>      
+
    
       </div>
 

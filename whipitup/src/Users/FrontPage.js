@@ -1,5 +1,7 @@
-import { Link, Route,Router } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Footer from "./Footer";
+import React from 'react'
+
 // import RecipesRouter from '../RecipesFolder/RecipesRouters'
 
 
@@ -11,7 +13,7 @@ export default function FrontPage(props) {
           <div className="entry">
             <button
               className="get-recipe-page entry-button"
-              onClick={props.getRecipes}
+              // onClick={props.getRecipes}
             >
               <Link to="./recipe">Get Recipe</Link>
             </button>

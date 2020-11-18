@@ -1,3 +1,5 @@
+import React from 'react'
+
 export default function AboutPage(props){
 
         console.log('i am alive')
