@@ -17,13 +17,12 @@ body header nav{
 .entry{
   display: flex;
   justify-content: center;
-  margin: 250px auto;
+  margin: 160px auto;
 }
 
 .entry-button{
   padding: 50px;
-  text-decoration: bold ;
-  background-color: blue;
+  background: #eeeeee;
 }
 
 footer ul, .menu ul {
@@ -53,4 +52,21 @@ button{
   padding: 10px;
   margin: 20px 100px 200px 100px;
 
+}
+
+/* recipes css  */
+.container{
+  display: flex;
+  border: black solid 5px;
+}
+
+.recipe ul li{
+  justify-content: center;
+
+}
+
+.front-page{
+  background: cornflowerblue;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
