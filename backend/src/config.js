@@ -6,12 +6,13 @@ function errorHandler(error, req, res, next) {
   } else {
     response = { message: error.message, error };
   }
+  console.log(error)
   res.status(500).json(response);
   next();
 }
 module.exports = {
   PORT: process.env.PORT || 8000,
   NODE_ENV: process.env.NODE_ENV || 'development',
-  DB_URL: process.env.DB_URL || 'postgresql://uncledb@localhost/recipes_db',
+  DATABASE_URL: process.env.DATABASE_URL || 'postgresql://uncleB@localhost/recipes_db',
   errorHandler
 };

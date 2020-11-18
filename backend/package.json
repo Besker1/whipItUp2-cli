@@ -8,6 +8,7 @@
     "dev": "nodemon src/server.js",
     "start": "node src/server.js",
     "migrate": "postgrator --config postgrator-config.js",
+    "seed": "psql -U uncleB -d recipes_db -f ./seeds/seed.recipes.sql",
     "predeploy": "npm audit",
     "deploy": "git push heroku master"
   },

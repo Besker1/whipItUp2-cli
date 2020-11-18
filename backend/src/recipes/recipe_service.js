@@ -3,35 +3,35 @@ const recipe_services = {
     getAllRecipes(knex){
       return knex
       .select('*')
-      .from('recipes_db');
+      .from('recipes_table');
   }, 
 
   getAllVeganRecipes(knex){
     return knex
     .select('*')
-    .from('recipes_db')
+    .from('recipes_table')
     .where('is_vegan', true)
   },
 
   insertNewRecipe(knex){
     return knex
     .insert(newRecipe)
-    .into('recipe_db')
+    .into('recipes_table')
     .returning('*')
   },
 
   getRecipesById(knex, id) {
-   return knex.from('recipes_db').select('*').where('id', id).first()
+   return knex.from('recipes_table').select('*').where('id', id).first()
     },
 
   deleteRecipes(knex, id) {
-       return knex('recipes_db')
+       return knex('recipes_table')
           .where({ id })
           .delete()
       },
 
   updateRecipes(knex, id, newRecipeValues){
-      return knex('recipes_db')
+      return knex('recipes_table')
          .where({ id })
          .update(newRecipeValues)
        },

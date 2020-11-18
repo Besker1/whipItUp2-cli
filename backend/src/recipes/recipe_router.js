@@ -149,7 +149,7 @@ recipe_Router
       .then(recipe => {
         res
           .status(201)
-          .location(`/recipess/${recipe.id}`)
+          .location(`/recipes/${recipe.id}`)
           .json(recipe)
       })
       .catch(next)
