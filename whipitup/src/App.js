@@ -11,6 +11,7 @@ import Menu from "./Users/Menu";
 import Footer from "./Users/Footer";
 import Nav from "./Users/Nav";
 import RecipeList from "./RecipesFolder/recipe-list";
+import { whipUpContext } from "./ApiContext";
 
 export default class App extends Component {
   state = {
@@ -41,24 +42,33 @@ export default class App extends Component {
       });
   };
   // fiilter get called if the state of vegan is true, thus function should be called
-  filterRecipeType=(mealType)=>{
+  filterRecipeType=(mealType, meal)=>{
     const data = this.state.recipes;
     const vegan = this.state.vegan;
-      const newData = []
+      // const newData = []
     
-      for(let i =0; i < data.length; i++){
-        if(vegan){
-          if(data[i].meal === mealType && data[i].is_vegan){
-         newData.push(data[i])
-        }
-        }
-        if(mealType === data[i].meal){
-          newData.push(data[i])
-        }
+      // for(let i =0; i < data.length; i++){
+      //   if(vegan){
+      //     if(data[i].meal === mealType && data[i].is_vegan){
+      //    newData.push(data[i])
+      //   }
+      //   }
+      //   if(mealType === data[i].meal){
+      //     newData.push(data[i])
+      //   }
         
-      }
+      // }
+
+      const newData = data.filter(data => {
+        if(data.meal === mealType){
+          return data
+        }else{
+          return;
+        }
+      })
       this.setState({
-        recipes: newData
+        recipes: newData,
+        meal
       })
     }
   
@@ -67,6 +77,7 @@ export default class App extends Component {
     console.log("here iam the meal", this.state.meal);
 
     return (
+     <whipUpContext.Provider value = {this.state}>
       <div className="front-page">
         <main>
           <header>
@@ -82,50 +93,11 @@ export default class App extends Component {
           <Route path="/login" component={LoginPage} />
           <Route path="/signup" component={SignUpPage} />
           <Route path="/recipe">
-            <body>
-              <h2>Try These and Thank me Later</h2>
-              <form>
-                <select
-                  onChange={(e) => {
-                    e.preventDefault();
-                    this.setState({
-                      meal: e.target.value
-                    })
-                  this.filterRecipeType(e.target.value)
-                  }
-                }
-                >
-                  <option>Meals</option>
-                  <option>breakfast</option>
-                  <option>lunch</option>
-                  <option>dinner</option>
-                </select>
-                <label htmlFor="vegan-option">Vegan</label>
-                <input
-                  type="checkbox"
-                  name="Vegan-option"
-                  id="vegan"
-                  defaultChecked={this.props.defaultChecked}
-                  onChange={(e) => {
-                    e.preventDefault();
-                    this.setState({
-                      vegan: true,
-                    });
-                  }}
-                />
-                <button> Search recipe</button>
-              </form>
-              <div className="results">
-                <ul>
-                  <RecipeList recipes={this.state.recipes} />
-                </ul>
-              </div>
-            </body>
-
-            {/* <RecipeSearchPage   /> */}
+            <RecipeSearchPage filterRecipeType = {this.filterRecipeType}  />
           </Route>
         </div>
       </div>
+    </whipUpContext.Provider>
     );
   }
 }
