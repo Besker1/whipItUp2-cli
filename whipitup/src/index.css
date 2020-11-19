@@ -11,8 +11,6 @@ body header nav{
   justify-content: space-between;
 }
 
-.menu{
-}
 
 .entry{
   display: flex;
@@ -56,13 +54,16 @@ button{
 
 /* recipes css  */
 .container{
-  display: flex;
+  display: inline-block;
+  direction: inherit;
   border: black solid 5px;
+  margin: 0;
+  padding: 50px;
+  background: whitesmoke;
 }
 
-.recipe ul li{
-  justify-content: center;
-
+.recipe ul{
+  padding: 20px;
 }
 
 .front-page{
