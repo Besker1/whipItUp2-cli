@@ -1,9 +1,11 @@
 body{
   text-align: center;
+  font-family: sans-serif;
 }
 ul li {
   list-style: none;
   margin: 10px;
+  font-size: 20px;
 }
 
 body header nav{
@@ -15,12 +17,16 @@ body header nav{
 .entry{
   display: flex;
   justify-content: center;
-  margin: 160px auto;
+  margin: 160px auto; 
+
 }
 
 .entry-button{
   padding: 50px;
   background: #eeeeee;
+  border: none;
+  border-radius: 20px;
+  font-size: 20px;
 }
 
 footer ul, .menu ul {
@@ -43,7 +49,7 @@ footer{
 .sign-form input{
   display: flex;
   padding: 20px;
-  justify-content: start;
+  /* justif: start; */
 }
 
 button{
@@ -70,4 +76,13 @@ button{
   background: cornflowerblue;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+
+a:visited{
+  color: black
+}
+
+a{
+  text-decoration: none;
 }

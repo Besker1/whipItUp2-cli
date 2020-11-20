@@ -42,36 +42,17 @@ export default class App extends Component {
       });
   };
   // fiilter get called if the state of vegan is true, thus function should be called
-  filterRecipeType=(mealType, meal)=>{
-    const data = this.state.recipes;
-    const vegan = this.state.vegan;
-      // const newData = []
-    
-      // for(let i =0; i < data.length; i++){
-      //   if(vegan){
-      //     if(data[i].meal === mealType && data[i].is_vegan){
-      //    newData.push(data[i])
-      //   }
-      //   }
-      //   if(mealType === data[i].meal){
-      //     newData.push(data[i])
-      //   }
-        
-      // }
-
-      const newData = data.filter(data => {
-        if(data.meal === mealType){
-          return data
-        }else{
-          return;
-        }
-      })
+  filterRecipeType=(meal)=>{
       this.setState({
-        recipes: newData,
+        // recipes: newData,
         meal
       })
     }
-  
+  filterVeganType = (vegan) => {
+    this.setState({
+      vegan
+    })
+  }
 
   render() {
     console.log("here iam the meal", this.state.meal);
@@ -93,7 +74,7 @@ export default class App extends Component {
           <Route path="/login" component={LoginPage} />
           <Route path="/signup" component={SignUpPage} />
           <Route path="/recipe">
-            <RecipeSearchPage filterRecipeType = {this.filterRecipeType}  />
+            <RecipeSearchPage filterRecipeType = {this.filterRecipeType} filterVeganType = {this.filterVeganType} />
           </Route>
         </div>
       </div>

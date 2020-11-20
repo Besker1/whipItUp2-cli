@@ -8,12 +8,12 @@ export default function Nav(){
             <li>
               <Link to="/about"> About</Link>
             </li>
-            <li>
+            {/* <li>
               <Link to="/login"> Login</Link>
             </li>
             <li>
               <Link to="/signup"> Sign Up</Link>
-            </li>
+            </li> */}
           </ul>
         </div>
     )

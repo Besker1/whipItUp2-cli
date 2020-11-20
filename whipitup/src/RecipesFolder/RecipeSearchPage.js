@@ -4,6 +4,20 @@ import { whipUpContext } from '../ApiContext';
 import RecipeList from './recipe-list';
 
 export default function RecipeSearchPage(props){
+    // const data = this.state.recipes;
+    // const vegan = this.state.vegan;
+    //   const newData = []
+    //   for(let i =0; i < data.length; i++){
+    //     if(vegan){
+    //       if(data[i].meal === mealType && data[i].is_vegan){
+    //      newData.push(data[i])
+    //     }
+    //     }
+    //     if(mealType === data[i].meal){
+    //       newData.push(data[i])
+    //     }
+        
+    //   }
     return (
     
     <whipUpContext.Consumer>
@@ -18,31 +32,48 @@ export default function RecipeSearchPage(props){
           onChange={(e) => {
             e.preventDefault();
                 meal =  e.target.value
-                props.filterRecipeType(e.target.value, meal)
+                props.filterRecipeType(e.target.value)
           }
         }
         >
-            <option>Meals</option>
-            <option>Breakfast</option>
-            <option>Lunch</option>
-            <option>Dinner</option>
+            <option value = 'meals'>Meals</option>
+            <option value= 'breakfast'>Breakfast</option>
+            <option value='lunch'>Lunch</option>
+            <option value = 'dinner'>Dinner</option>
         </select>
         <label htmlFor="vegan-option">Vegan</label>
         <input type="checkbox" 
         name="Vegan-option" 
         id="vegan"
-        // defaultChecked={this.defaultChecked}
         onChange={e=> {
         //   e.preventDefault();
-            vegan = true
+            props.filterVeganType(!vegan)
         }
     }/>
 
-        <button> Search recipe</button> 
     </form>
     <div className="results">
         <ul>
-        <RecipeList recipes={recipes} />
+        <RecipeList recipes={recipes.filter(recipe => {
+            // if(vegan){
+            //     return recipe.meal === meal && recipe.is_vegan
+            // }
+            console.log(meal)
+            if(meal === 'meals' || !meal){
+                return true
+            }else {
+                return recipe.meal === meal
+            }
+
+            }
+            ).filter(recipe => {
+                console.log(vegan)
+                if(vegan){
+                    return recipe.is_vegan
+                }
+            return true
+            })
+            } />
 
         </ul>
     </div>
