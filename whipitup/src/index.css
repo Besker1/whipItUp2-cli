@@ -17,8 +17,15 @@ body header nav{
 .entry{
   display: flex;
   justify-content: center;
-  margin: 160px auto; 
+  margin: 160px auto;
 
+}
+
+.entry :hover{
+  color: #EEF5FE;
+  padding: 1.5em;
+  border-radius: 8px;
+  background: #1977F3;
 }
 
 .entry-button{
@@ -30,8 +37,17 @@ body header nav{
 }
 
 footer ul, .menu ul {
+
   display: flex;
   flex-flow: row;
+  
+}
+
+.menu ul li :hover{
+    color: #EEF5FE;
+    padding: 0.5em;
+    border-radius: 8px;
+    background: #1977F3;
 }
 
 footer{
@@ -65,7 +81,6 @@ button{
   border: black solid 5px;
   margin: 0;
   padding: 50px;
-  background: whitesmoke;
 }
 
 .recipe ul{
@@ -73,9 +88,11 @@ button{
 }
 
 .front-page{
-  background: cornflowerblue;
+  background: url(https://images.unsplash.com/photo-1466781783364-36c955e42a7f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1951&q=80);
+  /* background: cornflowerblue; */
   background-repeat: no-repeat;
   background-size: cover;
+  width: 100px;
 }
 
 
