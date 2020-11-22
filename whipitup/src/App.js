@@ -8,9 +8,9 @@ import LoginPage from "./Users/LoginPage";
 import SignUpPage from "./Users/SignUpPage";
 import RecipeSearchPage from "./RecipesFolder/RecipeSearchPage";
 import Menu from "./Users/Menu";
-import Footer from "./Users/Footer";
+// import Footer from "./Users/Footer";
 import Nav from "./Users/Nav";
-import RecipeList from "./RecipesFolder/recipe-list";
+// import RecipeList from "./RecipesFolder/recipe-list";
 import { whipUpContext } from "./ApiContext";
 
 export default class App extends Component {
@@ -37,48 +37,51 @@ export default class App extends Component {
   }
   /// push the recipe to the recipes found from fetch to the recipes in the state;
   handleRecipe = (data) => {
-      this.setState({
-        recipes: data
-      });
+    this.setState({
+      recipes: data,
+    });
   };
   // fiilter get called if the state of vegan is true, thus function should be called
-  filterRecipeType=(meal)=>{
-      this.setState({
-        // recipes: newData,
-        meal
-      })
-    }
+  filterRecipeType = (meal) => {
+    this.setState({
+      // recipes: newData,
+      meal,
+    });
+  };
   filterVeganType = (vegan) => {
     this.setState({
-      vegan
-    })
-  }
+      vegan,
+    });
+  };
 
   render() {
     console.log("here iam the meal", this.state.meal);
 
     return (
-     <whipUpContext.Provider value = {this.state}>
-      <div className="front-page">
-        <main>
-          <header>
-            <nav className="navigation">
-              <Menu />
-              <Nav />
-            </nav>
-          </header>
-        </main>
-        <div>
-          <Route exact path="/" component={FrontPage} />
-          <Route exact path="/about" component={AboutPage} />
-          <Route path="/login" component={LoginPage} />
-          <Route path="/signup" component={SignUpPage} />
-          <Route path="/recipe">
-            <RecipeSearchPage filterRecipeType = {this.filterRecipeType} filterVeganType = {this.filterVeganType} />
-          </Route>
+      <whipUpContext.Provider value={this.state}>
+        <div className="front-page">
+          <main>
+            <header>
+              <nav className="navigation">
+                <Menu />
+                <Nav />
+              </nav>
+            </header>
+          </main>
+          <div>
+            <Route exact path="/" component={FrontPage} />
+            <Route exact path="/about" component={AboutPage} />
+            <Route path="/login" component={LoginPage} />
+            <Route path="/signup" component={SignUpPage} />
+            <Route path="/recipe">
+              <RecipeSearchPage
+                filterRecipeType={this.filterRecipeType}
+                filterVeganType={this.filterVeganType}
+              />
+            </Route>
+          </div>
         </div>
-      </div>
-    </whipUpContext.Provider>
+      </whipUpContext.Provider>
     );
   }
 }
