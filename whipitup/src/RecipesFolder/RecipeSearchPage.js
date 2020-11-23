@@ -4,20 +4,8 @@ import { whipUpContext } from "../ApiContext";
 import RecipeList from "./recipe-list";
 
 export default function RecipeSearchPage(props) {
-  // const data = this.state.recipes;
-  // const vegan = this.state.vegan;
-  //   const newData = []
-  //   for(let i =0; i < data.length; i++){
-  //     if(vegan){
-  //       if(data[i].meal === mealType && data[i].is_vegan){
-  //      newData.push(data[i])
-  //     }
-  //     }
-  //     if(mealType === data[i].meal){
-  //       newData.push(data[i])
-  //     }
-
-  //   }
+  //// use props to get the filter function from app.js
+  /// use context to access other items from the state
   return (
     <whipUpContext.Consumer>
       {({ vegan, meal, recipes }) => (
@@ -44,8 +32,8 @@ export default function RecipeSearchPage(props) {
                 type="checkbox"
                 name="Vegan-option"
                 id="vegan"
+                /// toggle vegan true or false
                 onChange={(e) => {
-                  //   e.preventDefault();
                   props.filterVeganType(!vegan);
                 }}
               />
@@ -54,12 +42,9 @@ export default function RecipeSearchPage(props) {
 
           <div className="results">
             <RecipeList
+              /// filter out possible functions on ui by meals or vegan
               recipes={recipes
                 .filter((recipe) => {
-                  // if(vegan){
-                  //     return recipe.meal === meal && recipe.is_vegan
-                  // }
-                  console.log(meal);
                   if (meal === "meals" || !meal) {
                     return true;
                   } else {
