@@ -1,11 +1,13 @@
 body {
   text-align: center;
   font-family: sans-serif;
+  box-sizing: border-box;
 }
 ul li {
   list-style: none;
-  margin: 10px;
+  /* margin: 10px; */
   font-size: 20px;
+  text-align: center;
 }
 
 body header nav {
@@ -39,12 +41,22 @@ footer ul,
   display: flex;
   flex-flow: row;
 }
+footer ul li {
+  margin: 10px;
+}
 
 .menu ul li :hover {
   color: #eef5fe;
   padding: 0.5em;
   border-radius: 8px;
   background: #1977f3;
+}
+
+.logo img {
+  width: 100px;
+}
+.logo {
+  display: flex;
 }
 
 footer {
@@ -72,14 +84,12 @@ button {
 
 /* recipes css  */
 .container {
-  display: flex;
-  justify-content: center;
-  /* direction: inherit; */
   border: black solid 5px;
-  margin: 150px;
-  padding: 50px;
+  margin: 20px 0 20px;
+  /*padding: 0; */
 }
 
+/*recipe css and animation*/
 .recipe ul {
   display: flex;
   flex-flow: column;
@@ -134,4 +144,27 @@ form {
 select {
   -moz-appearance: none;
   -webkit-appearance: none;
+}
+
+@media all and (min-width: 690px) {
+  /* recipes css  */
+  .container {
+    /* display: flex;
+    justify-content: center; */
+    border: black solid 5px;
+    margin: 20px 0 20px;
+    background: purple;
+  }
+  /* 
+  .theList {
+    display: flex;
+    background: blue;
+  } */
+
+  .results {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-evenly;
+    background: yellow;
+  }
 }
