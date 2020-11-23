@@ -2,15 +2,13 @@ import "./App.css";
 import "./index.css";
 import { React, Component } from "react";
 import FrontPage from "./Users/FrontPage";
-import { Route } from "react-router-dom";
+import { Route, HashRouter as Router } from "react-router-dom";
 import AboutPage from "./Users/AboutPage";
 import LoginPage from "./Users/LoginPage";
 import SignUpPage from "./Users/SignUpPage";
 import RecipeSearchPage from "./RecipesFolder/RecipeSearchPage";
 import Menu from "./Users/Menu";
-// import Footer from "./Users/Footer";
 import Nav from "./Users/Nav";
-// import RecipeList from "./RecipesFolder/recipe-list";
 import { whipUpContext } from "./ApiContext";
 
 export default class App extends Component {
@@ -55,32 +53,34 @@ export default class App extends Component {
   };
 
   render() {
-    console.log("here iam the meal", this.state.meal);
-
     return (
       <whipUpContext.Provider value={this.state}>
-        <div className="front-page">
-          <main>
-            <header>
-              <nav className="navigation">
-                <Menu />
-                <Nav />
-              </nav>
-            </header>
-          </main>
-          <div>
-            <Route exact path="/" component={FrontPage} />
-            <Route exact path="/about" component={AboutPage} />
-            <Route path="/login" component={LoginPage} />
-            <Route path="/signup" component={SignUpPage} />
-            <Route path="/recipe">
-              <RecipeSearchPage
-                filterRecipeType={this.filterRecipeType}
-                filterVeganType={this.filterVeganType}
-              />
-            </Route>
+        <Router>
+          <div className="front-page">
+            <main>
+              <header>
+                <nav className="navigation">
+                  <Menu />
+                  <Route exact path="/">
+                    <Nav />
+                  </Route>
+                </nav>
+              </header>
+            </main>
+            <div>
+              <Route exact path="/" component={FrontPage} />
+              <Route exact path="/about" component={AboutPage} />
+              <Route path="/login" component={LoginPage} />
+              <Route path="/signup" component={SignUpPage} />
+              <Route path="/recipe">
+                <RecipeSearchPage
+                  filterRecipeType={this.filterRecipeType}
+                  filterVeganType={this.filterVeganType}
+                />
+              </Route>
+            </div>
           </div>
-        </div>
+        </Router>
       </whipUpContext.Provider>
     );
   }

@@ -115,6 +115,7 @@ button {
   z-index: -1;
 }
 
+/* file links  */
 a:visited {
   color: black;
 }
@@ -129,6 +130,7 @@ form {
   justify-content: center;
 }
 
+/* filter selections  */
 .selections {
   margin-right: 50px;
   padding: 0.5em;
@@ -144,6 +146,7 @@ form {
   padding: 1.5em;
   border-radius: 8px;
   background: #1977f3;
+  cursor: pointer;
 }
 
 .vegan {
@@ -152,6 +155,7 @@ form {
   padding: 1em;
   border-radius: 8px;
   color: white;
+  cursor: pointer;
 }
 
 select {
@@ -168,20 +172,13 @@ select {
     border: black solid 5px;
     margin: 20px 0 20px;
     padding: 0;
-    /* background: purple; */
   }
-  /* 
-  .theList {
-    display: flex;
-    background: blue;
-  } */
 
   .results {
     display: flex;
     flex-flow: row;
     justify-content: space-evenly;
     animation: slidesIn 0.5 ease forwards 3/7;
-    /* background: yellow; */
   }
 }
 @keyframes slidesIn {
@@ -192,5 +189,14 @@ select {
   to {
     opacity: 1;
     transform: translate(0px);
+  }
+}
+
+/* about section  */
+
+@media all and (min-width: 600px) {
+  .about {
+    margin: 10%;
+    font-size: 50px;
   }
 }

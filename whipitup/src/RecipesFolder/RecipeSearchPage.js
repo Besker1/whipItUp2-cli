@@ -9,8 +9,8 @@ export default function RecipeSearchPage(props) {
   return (
     <whipUpContext.Consumer>
       {({ vegan, meal, recipes }) => (
-        <body>
-          <h2>Try These and Thank me Later</h2>
+        <div className="body">
+          <h2>Try these and whipUp later</h2>
           <form>
             <select
               className="selections"
@@ -52,7 +52,6 @@ export default function RecipeSearchPage(props) {
                   }
                 })
                 .filter((recipe) => {
-                  console.log(vegan);
                   if (vegan) {
                     return recipe.is_vegan;
                   }
@@ -60,7 +59,7 @@ export default function RecipeSearchPage(props) {
                 })}
             />
           </div>
-        </body>
+        </div>
       )}
     </whipUpContext.Consumer>
   );
