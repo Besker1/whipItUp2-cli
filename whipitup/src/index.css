@@ -129,7 +129,17 @@ form {
 
 .selections {
   margin-right: 50px;
-  padding: 1em;
+  padding: 0.5em;
+  border-radius: 8px;
+  background: #1977f3;
+  color: white;
+  text-align: center;
+  font-size: 15px;
+}
+
+.selections:hover {
+  color: #eef5fe;
+  padding: 1.5em;
   border-radius: 8px;
   background: #1977f3;
 }
@@ -139,6 +149,7 @@ form {
   background: green;
   padding: 1em;
   border-radius: 8px;
+  color: white;
 }
 
 select {
@@ -149,11 +160,13 @@ select {
 @media all and (min-width: 690px) {
   /* recipes css  */
   .container {
-    /* display: flex;
-    justify-content: center; */
+    display: flex;
+    flex-flow: row;
+    justify-content: space-evenly;
     border: black solid 5px;
     margin: 20px 0 20px;
-    background: purple;
+    padding: 0;
+    /* background: purple; */
   }
   /* 
   .theList {
@@ -165,6 +178,7 @@ select {
     display: flex;
     flex-flow: row;
     justify-content: space-evenly;
-    background: yellow;
+    /* background: yellow; */
+    transition: ease-in-out 0.5s;
   }
 }
