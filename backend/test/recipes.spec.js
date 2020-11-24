@@ -1,6 +1,7 @@
 const { expect } = require("chai");
 const knex = require("knex");
 const app = require("../src/app");
+require("dotenv").config();
 const { recipesTest } = require("./RecipesTest");
 
 describe.only("Recipes Enpoints", function () {
@@ -20,22 +21,20 @@ describe.only("Recipes Enpoints", function () {
   afterEach("cleanup", () => db("recipes_table").truncate());
 
   describe(`GET /recipess`, () => {
-    context(`if theres is no recipes`, () => {
+    context(`theres aren't recipes`, () => {
       it(`responds with 200 and an empty list`, () => {
-        return supertest(app).get("/recpes").expect(200, []);
+        return supertest(app).get("/").expect(200, []);
       });
     });
   });
 
-  context("Given there are recipes in the database", () => {
-    let db;
-
+  context("there are recipes in the database", () => {
     beforeEach("insert recipes", () => {
       return db.into("recipes_table").insert(recipesTest);
     });
 
     it("GET /recipe responds with 200 and all of the recipes", () => {
-      return supertest(app).get("/recipes").expect(200, recipesTest);
+      return supertest(app).get("/").expect(200, recipesTest);
     });
   });
 });
