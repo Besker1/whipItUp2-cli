@@ -8,12 +8,36 @@ describe("App", () => {
   });
 });
 
-describe("", () => {
+describe("getall recipes", () => {
   let db;
   let recipesTest = [
     {
       title: "Tofu",
       content: ["great", "food", "good"],
+      img: "image",
+      meal: "dinner",
+      is_vegan: true,
+    },
+    {
+      title: "Tofu",
+      content: ["great", "food", "good"],
+      img: "image",
+      meal: "lunch",
+      is_vegan: false,
+    },
+    {
+      title: "Tofu",
+      content: ["great", "food", "good"],
+      img: "image",
+      meal: "breakfast",
+      is_vegan: false,
     },
   ];
+
+  before(() => {
+    db = knex({
+      client: "pg",
+      connection: process.env.TEST_DB_URL,
+    });
+  });
 });
