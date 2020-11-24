@@ -20,7 +20,7 @@ describe.only("Recipes Enpoints", function () {
   before("clean the table", () => db("recipes_table").truncate());
   afterEach("cleanup", () => db("recipes_table").truncate());
 
-  describe(`GET /recipess`, () => {
+  describe.only(`GET /recipess`, () => {
     context(`theres aren't recipes`, () => {
       it(`responds with 200 and an empty list`, () => {
         return supertest(app).get("/").expect(200, []);

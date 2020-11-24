@@ -14,5 +14,3 @@ app.set("db", db);
 app.listen(PORT, () => {
   console.log(`server is running effectively at http://localhost:${PORT}`);
 });
-
-console.log("this is me", getAllRecipes);

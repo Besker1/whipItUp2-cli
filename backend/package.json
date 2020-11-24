@@ -12,6 +12,7 @@
     "seed": "psql -U uncleB -d recipes_db -f ./seeds/seed.recipes.sql",
     "predeploy": "npm audit",
     "deploy": "git push heroku master"
+    
   },
   "keywords": [],
   "author": "",
